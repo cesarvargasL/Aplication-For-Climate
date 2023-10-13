@@ -1,0 +1,21 @@
+
+#caja1, #caja2, #caja3 {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 200px;
+    width: 200px;
+    height: 200px;
+}
+
+#caja1 {
+    background-color: rgb(0, 0, 0);
+    color:azure;    
+}
+#caja2 {
+    color:black;    
+}
+#caja3 {
+    background-color: #0c6991;
+    color:azure;    
+}
