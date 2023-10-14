@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
     let temperaturaDescripcion = document.getElementById('temperatura-descripcion')  
     
     let ubicacion = document.getElementById('ubicacion')  
-    let iconoAnimado = document.getElementById('icono-animado') 
+    //let iconoAnimado = document.getElementById('icono-animado') 
 
     let vientoVelocidad = document.getElementById('viento-velocidad') 
 
@@ -20,10 +20,10 @@ window.addEventListener('load', () => {
 
            
             //ubicación actual    
-           //const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${AQUI_VIENE_TU_API_KEY}`
+           //const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=c83f26f0e4757dff05ca66433d246020`
 
            //ubicación por ciudad
-           const url = `https://api.openweathermap.org/data/2.5/weather?q=Bogota,CO&lang=es&units=metric&appid=c83f26f0e4757dff05ca66433d246020`
+           const url = `https://api.openweathermap.org/data/2.5/weather?q=Sucre,EC&lang=es&units=metric&appid=c83f26f0e4757dff05ca66433d246020`
            
 
            fetch(url)

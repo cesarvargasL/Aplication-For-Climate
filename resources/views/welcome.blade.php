@@ -9,6 +9,11 @@
 
 </head>
 <body>    
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+    </form>
+
     <div id="contenedor">
         <div id="caja1">
             <h1 id="temperatura-valor"></h1>
