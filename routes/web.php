@@ -1,29 +1,12 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\WelcomeController;
 
 Route::get('/', function () {
-    return view('user.login');
+    return redirect()->route('login');
 });
 
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('welcome');
-
-Route::post('/logout', 'LogoutController@logout')->name('logout');
-
-Route::get('/login', 'UserController@showLoginForm')->name('login');
-
-Route::get('/users', [UserController::class, 'index']);
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/welcome', [WelcomeController::class, 'showWelcomeForm'])->name('welcome');
+?>

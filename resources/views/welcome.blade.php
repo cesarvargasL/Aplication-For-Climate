@@ -1,34 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Clima</title>
-    <link rel="stylesheet" href="{{asset('css/styles.css') }}">
-
+    <title>Bienvenida</title>
 </head>
-<body>    
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
-    </form>
-
-    <div id="contenedor">
-        <div id="caja1">
-            <h1 id="temperatura-valor"></h1>
-            <h1 id="temperatura-descripcion"></h1>
-        </div>
-        <div id="caja2">
-            <h2 id="ubicacion"></h2>
-            <img id="icono-animado" src="" alt="" height="128" width="128">
-        </div>
-        <div id="caja3">
-            <h3>Veloc. del Viento</h3>
-            <h1 id="viento-velocidad"></h1>
+<body>
+    <h1>Bienvenido</h1>
+    <div id="clima-container">
+        <div id="contenedor">
+            <div id="caja1">
+                <h1 id="temperatura-valor">{{ round($weather['main']['temp']) }} ° C</h1>
+                <h1 id="temperatura-descripcion">{{ $weather['weather'][0]['description'] }}</h1>
+            </div>
+            <div id="caja2">
+                <h2 id="ubicacion">{{ $weather['name'] }}, {{ $weather['sys']['country'] }}</h2>
+                <img id="icono-animado" src="http://openweathermap.org/img/wn/{{ $weather['weather'][0]['icon'] }}.png" alt="" height="128" width="128">
+            </div>
+            <div id="caja3">
+                <h3>Veloc. del Viento</h3>
+                <h1 id="viento-velocidad">{{ $weather['wind']['speed'] }} m/s</h1>
+            </div>
         </div>
     </div>
-    <script src="{{asset('js/app.js') }}"></script>
+    <script>
+        const temperaturaValor = document.getElementById('temperatura-valor');
+        const temperaturaDescripcion = document.getElementById('temperatura-descripcion');
+        const ubicacion = document.getElementById('ubicacion');
+        const iconoAnimado = document.getElementById('icono-animado');
+        const vientoVelocidad = document.getElementById('viento-velocidad');
 
+        temperaturaValor.innerHTML = Math.round({{ $weather['main']['temp'] }});
+        temperaturaDescripcion.innerHTML = '{{ $weather['weather'][0]['description'] }}';
+        ubicacion.innerHTML = '{{ $weather['name'] }}, {{ $weather['sys']['country'] }}';
+        iconoAnimado.src = 'http://openweathermap.org/img/wn/{{ $weather['weather'][0]['icon'] }}.png';
+        vientoVelocidad.innerHTML = '{{ $weather['wind']['speed'] }} m/s';
+    </script>
 </body>
 </html>

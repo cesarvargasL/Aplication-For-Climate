@@ -1,99 +1,37 @@
-// evento Load
-window.addEventListener('load', () => {
-    let lon
-    let lat
+document.addEventListener('DOMContentLoaded', () => {
+  let temperaturaValor = document.getElementById('temperatura-valor');
+  let temperaturaDescripcion = document.getElementById('temperatura-descripcion');
+  let ubicacion = document.getElementById('ubicacion');
+  let vientoVelocidad = document.getElementById('viento-velocidad');
 
-    let temperaturaValor = document.getElementById('temperatura-valor')  
-    let temperaturaDescripcion = document.getElementById('temperatura-descripcion')  
-    
-    let ubicacion = document.getElementById('ubicacion')  
-    //let iconoAnimado = document.getElementById('icono-animado') 
+  document.getElementById('username').addEventListener('change', function() {
+      const selectedUserId = this.value; // Obtener el ID de usuario seleccionado
+      fetch(`/obtenerCiudad/${selectedUserId}`)
+          .then(response => response.json())
+          .then(data => {
+              const ciudad = data.ciudad; // Obtener la ciudad del usuario
+              const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&lang=es&units=metric&appid=c83f26f0e4757dff05ca66433d246020`;
+              return fetch(url);
+          })
+          .then(response => response.json())
+          .then(data => {
+              let temp = Math.round(data.main.temp);
+              temperaturaValor.textContent = `${temp} ° C`;
 
-    let vientoVelocidad = document.getElementById('viento-velocidad') 
+              let desc = data.weather[0].description;
+              temperaturaDescripcion.textContent = desc.toUpperCase();
 
+              ubicacion.textContent = data.name + "," + data.sys.country;
 
-    if(navigator.geolocation){
-       navigator.geolocation.getCurrentPosition( posicion => {
-           //console.log(posicion.coords.latitude)
-           lon = posicion.coords.longitude
-           lat = posicion.coords.latitude
+              vientoVelocidad.textContent = `${data.wind.speed} m/s`;
 
-           
-            //ubicación actual    
-           //const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=c83f26f0e4757dff05ca66433d246020`
+              let iconCode = data.weather[0].icon;
+              const urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`;
+              let icono = document.getElementById('icono-animado');
+              icono.src = urlIcon;
 
-           //ubicación por ciudad
-           const url = `https://api.openweathermap.org/data/2.5/weather?q=Sucre,EC&lang=es&units=metric&appid=c83f26f0e4757dff05ca66433d246020`
-           
-
-           fetch(url)
-            .then( response => { return response.json()})
-            .then( data => {
-                console.log(data)
-                
-                let temp = Math.round(data.main.temp)
-                //console.log(temp)
-                temperaturaValor.textContent = `${temp} ° C`
-
-                //console.log(data.weather[0].description)
-                let desc = data.weather[0].description
-                temperaturaDescripcion.textContent = desc.toUpperCase()
-                ubicacion.textContent = data.name + "," +data.sys.country;
-                
-                vientoVelocidad.textContent = `${data.wind.speed} m/s`
-                
-                //para iconos estáticos
-                console.log(data.weather[0].icon)
-                let iconCode = data.weather[0].icon
-                const urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`;
-                let icono = document.getElementById('icono-animado');
-                icono.src = urlIcon;
-                console.log(urlIcon)
-
-                //para iconos dinámicos
-                /*
-                   console.log(data.weather[0].main)
-            switch (data.weather[0].main) {
-                case 'Thunderstorm':
-                  iconoAnimado.src='animated/thunder.svg'
-                  console.log('TORMENTA');
-                  break;
-                case 'Drizzle':
-                  iconoAnimado.src='animated/rainy-2.svg'
-                  console.log('LLOVIZNA');
-                  break;
-                case 'Rain':
-                  iconoAnimado.src='animated/rainy-7.svg'
-                  console.log('LLUVIA');
-                  break;
-                case 'Snow':
-                  iconoAnimado.src='animated/snowy-6.svg'
-                    console.log('NIEVE');
-                  break;                        
-                case 'Clear':
-                    iconoAnimado.src='animated/day.svg'
-                    console.log('LIMPIO');
-                  break;
-                case 'Atmosphere':
-                  iconoAnimado.src='animated/weather.svg'
-                    console.log('ATMOSFERA');
-                    break;  
-                case 'Clouds':
-                    iconoAnimado.src='animated/cloudy-day-1.svg'
-                    console.log('NUBES');
-                    break;  
-                default:
-                  iconoAnimado.src='animated/cloudy-day-1.svg'
-                  console.log('por defecto');
-              }
-
-        })
-                */
-            })
-            .catch( error => {
-                console.log(error)
-            })
-       })
-          
-    }
-})
+              console.log(data);
+          })
+          .catch(error => console.error('Error:', error));
+  });
+});
