@@ -21,19 +21,14 @@
                 <h1 id="viento-velocidad">{{ $weather['wind']['speed'] }} m/s</h1>
             </div>
         </div>
-    </div>
-    <script>
-        const temperaturaValor = document.getElementById('temperatura-valor');
-        const temperaturaDescripcion = document.getElementById('temperatura-descripcion');
-        const ubicacion = document.getElementById('ubicacion');
-        const iconoAnimado = document.getElementById('icono-animado');
-        const vientoVelocidad = document.getElementById('viento-velocidad');
+        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        Cerrar sesión
+        </a>
 
-        temperaturaValor.innerHTML = Math.round({{ $weather['main']['temp'] }});
-        temperaturaDescripcion.innerHTML = '{{ $weather['weather'][0]['description'] }}';
-        ubicacion.innerHTML = '{{ $weather['name'] }}, {{ $weather['sys']['country'] }}';
-        iconoAnimado.src = 'http://openweathermap.org/img/wn/{{ $weather['weather'][0]['icon'] }}.png';
-        vientoVelocidad.innerHTML = '{{ $weather['wind']['speed'] }} m/s';
-    </script>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+        </form>
+    </div>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
