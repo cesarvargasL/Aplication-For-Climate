@@ -1,0 +1,130 @@
+*{
+    color: #333;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-image: url("/img/login-background.jpeg");
+    background-size:cover;
+    display: flex;
+    justify-content: center; 
+    
+}
+
+.cuadro-login {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5%;
+    height: 700px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.ingreso-usuarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+label {
+    font-size: 1.3rem;
+}
+
+select, input {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px; 
+    border: 1px solid rgb(161, 228, 240);
+    background-color: rgba(215, 239, 244, 1);
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.opciones {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.botones {
+    color: #FFF;
+    font-size: 1rem;
+    background-color: #24a0ed;
+    border: 1px solid #24a0ed ;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ingresar {
+    width: 100px;
+    height: 50px;
+    font-size: 1.2rem;
+}
+
+.cuadro-registro{
+    padding-top: 15px;
+    background-color: rgba(215, 239, 244, 0.8);
+    border-radius: 5%;
+    width: 280px;
+    height: 130px;
+    text-align: center;
+    align-items: center;
+}
+
+.registrar {
+    width: 150px;
+    height: 50px;
+}
+
+.nuevo-registro {
+    display: none;
+}
+
+.nuevo-registro:target {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.btn-registro {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cancelar {
+    border-color: #ff0202;
+    background-color: #ff0202;
+}
+
+.ver-usuarios {
+    width: 150px;
+    height: 50px;
+    color: #FFF;
+}
+
+article {
+    text-align: center;
+}
+
+.biografia {
+    color: #db8ef5;
+}
+
+.biografia:hover {
+    color: #d16ef2;
+}
+

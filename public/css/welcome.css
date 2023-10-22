@@ -1,0 +1,67 @@
+*{
+    color: #191919;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+body {
+    background-image: url("/img/welcome-background.jpeg");
+    background-size:cover;
+}
+
+main {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+    border-radius: 10px;
+    height: 580px;
+}
+
+header {
+    order: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.ubicacion{
+    margin-top: 80px;
+    font-size: 2.5rem;
+}
+
+.cerrar-sesion{
+    margin-top: 20px;
+    height: 30px;
+    width: 140px;
+    background-color: rgb(61, 70, 99);
+    border: 1px solid;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.cerrar-sesion:hover{
+    background-color: rgb(21, 31, 82);
+    cursor: pointer;
+}
+
+footer {
+    order: 2;
+    display: flex;
+    justify-content: space-around;
+    gap: 5rem;
+    background-color: rgba(6, 27, 97, 0.5);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+}
+
+.f-item1 {
+    display: flex;
+    flex-direction: row;
+}
